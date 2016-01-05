@@ -6,7 +6,7 @@ require 'wwo/version'
 Gem::Specification.new do |spec|
   spec.name          = "wwo"
   spec.version       = Wwo::VERSION
-  spec.authors       = ["株式会社アルム　Allm Inc", "Ryan Stenhouse"]
+  spec.authors       = ["株式会社アルム　Allm Inc", "Ryan Stenhouse", "David Czarnecki"]
   spec.email         = ["r.stenhouse@allm.net"]
 
   spec.summary       = %q{Rubygem for accessing the free and premium weather APIs from World Weather Online.  Inspired by Dark Sky's Forecast.IO gem.}
