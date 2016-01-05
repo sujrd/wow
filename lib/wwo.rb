@@ -46,7 +46,7 @@ module Wwo
       api_response = get(uri)
 
       if api_response.success?
-        return Hashie::Mash.new(MultiJson.load(api_response.body))
+        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
       end
     end
 
@@ -64,7 +64,7 @@ module Wwo
       api_response = get(uri)
 
       if api_response.success?
-        return Hashie::Mash.new(MultiJson.load(api_response.body))
+        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
       end
     end
 
@@ -85,8 +85,17 @@ module Wwo
 
     def get(path, params = {})
       params = Wwo.default_params.merge(params || {})
-
       connection.get(path, params)
+    end
+
+    # Munges the repsonse into one like what we would expect from Forecast.io
+    #
+    def parse_response(response)
+      data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] } }
+      data[:daily][:data][0][:icon] = response.data.weather.first.hourly.first.weatherIconUrl.first.value
+      data[:daily][:data][0]['temperatureMax'] = response.data.weather.first.maxtempC
+      data[:daily][:data][0]['temperatureMin'] = response.data.weather.first.mintempC
+      data
     end
   end
 end
