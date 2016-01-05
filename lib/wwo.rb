@@ -14,6 +14,24 @@ module Wwo
 
   class << self
 
+    # Provides API compatibility to forecast.io's rubygem - expects the same signature and a
+    # Unix Timestamp for :time, it will use the historic / now_or_later methods under the hood
+    # to actually do its work.
+    #
+    def forecast(latitude, longitude, options = {})
+      if options[:time]
+        date = Time.at(options[:time])
+      else
+        date = Time.now
+      end
+
+      if date.to_i < Time.now.to_i
+        historic(latitude, longitude, date)
+      else
+        now_or_later(latitude, longitude, date)
+      end
+    end
+
     # Returns historic weather at the provided latitude and longitude coordinates, on a
     # specific date.
     #
@@ -39,7 +57,7 @@ module Wwo
     # @param longitude [String] Longitude.
     # @param date [Date] or [Integer] Date, or Unix Timestamp.
     #
-    def forecast(latitude, longitude, date_or_timestamp = Date.today)
+    def now_or_later(latitude, longitude, date_or_timestamp = Date.today)
       date = date_or_timestamp.is_a?(Numeric) ? Time.at(date_or_timestamp).strftime("%F") : date_or_timestamp.strftime("%F")
       uri = "#{Wwo.api_endpoint}/weather.ashx?q=#{latitude},#{longitude}&date=#{date}&num_of_days=1&tp=24&format=json&key=#{Wwo.api_key}"
 
