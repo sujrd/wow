@@ -1,8 +1,8 @@
 module Wwo
   module Configuration
     # Default API endpoint
-    DEFAULT_FREE_ENDPOINT       = 'https://api.worldweatheronline.com/free/v2/'
-    DEFAULT_PREMIUM_ENDPOINT    = 'https://api.worldweatheronline.com/premium/v1/'
+    DEFAULT_FREE_ENDPOINT       = 'https://api.worldweatheronline.com/free/v2'
+    DEFAULT_PREMIUM_ENDPOINT    = 'https://api.worldweatheronline.com/premium/v1'
 
     # Forecast API endpoint
     attr_writer :api_endpoint
@@ -51,7 +51,7 @@ module Wwo
     private
 
     def use_premium_api?
-      @use_premium_api == true
+      Wwo.use_premium_api == true
     end
   end
 end

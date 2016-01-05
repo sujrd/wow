@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+Basic usage is just like the forecast gem. For example, if you were calling the API from a
+Rails action, you might want to do this:
+
+````ruby
+Wwo.connection = Faraday.new do |builder|
+   builder.use Faraday::HttpCache, store: Rails.cache, serializer: Marshal
+   builder.adapter Faraday.default_adapter
+end
+````
+
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/wwo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sujrd/wwo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
