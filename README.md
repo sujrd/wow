@@ -4,8 +4,14 @@ This gem provides a (for now) very opinionated interface to [World Weather Onlin
 [forecast-ruby gem](https://github.com/darkskyapp/forecast-ruby) by the wonderful people over at Dark Skies / Forecast.io
 and was bourne out of the need to have a drop in replacemnet for Forecast.io in an application.
 
-The plan is to ehance this over time so that it supports more of WWO's API. Right now it supports forecasts and historical
-weather for a lat / long pair of anywhere in the world.
+The plan is to enhance this over time so that it supports more of WWO's API and is a bit more developer friendly. Right now,
+however, there are the following assumptions / options that you need to be aware of:
+
+  * Temperatures are always returned in **degrees celcius**.
+  * For now we only expect requests for one day at a time, as per the way forecast-ruby works
+  * We only pull in **daily snapshot** information, that is, the predomanant weather over the 24h period of the day in question.
+  * We futz around with the response back, so it is in the same shape of JSON as you get back from `forecast.io`. This is intentional -
+    remember that we intend this to be (for now), a drop-in replacement for forecast.io.
 
 ## Installation
 

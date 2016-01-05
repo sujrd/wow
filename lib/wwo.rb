@@ -42,12 +42,7 @@ module Wwo
     def historic(latitude, longitude, date_or_timestamp)
       date = date_or_timestamp.is_a?(Numeric) ? Time.at(date_or_timestamp).strftime("%F") : date_or_timestamp.strftime("%F")
       uri = "#{Wwo.api_endpoint}/past-weather.ashx?q=#{latitude},#{longitude}&date=#{date}&tp=24&format=json&key=#{Wwo.api_key}"
-
-      api_response = get(uri)
-
-      if api_response.success?
-        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
-      end
+      api_call(uri)
     end
 
     # Returns historic weather at the provided latitude and longitude coordinates, on a
@@ -60,13 +55,9 @@ module Wwo
     def now_or_later(latitude, longitude, date_or_timestamp = Date.today)
       date = date_or_timestamp.is_a?(Numeric) ? Time.at(date_or_timestamp).strftime("%F") : date_or_timestamp.strftime("%F")
       uri = "#{Wwo.api_endpoint}/weather.ashx?q=#{latitude},#{longitude}&date=#{date}&num_of_days=1&tp=24&format=json&key=#{Wwo.api_key}"
-
-      api_response = get(uri)
-
-      if api_response.success?
-        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
-      end
+      api_call(uri)
     end
+
 
     # Build or get an HTTP connection object.
     def connection
@@ -82,6 +73,15 @@ module Wwo
     end
 
     private
+
+    def api_call(uri)
+      api_response = get(uri)
+      if api_response.success?
+        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
+      else
+        return {}
+      end
+    end
 
     def get(path, params = {})
       params = Wwo.default_params.merge(params || {})
