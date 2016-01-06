@@ -1,10 +1,9 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
+require 'simplecov'
+require "codeclimate-test-reporter"
 require 'rspec'
 require 'wwo'
-
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
-
 require 'vcr'
 require 'typhoeus/adapters/faraday'
 
@@ -16,14 +15,13 @@ end
 
 Faraday.default_adapter = :typhoeus
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
-
-=begin
 RSpec.configure do |config|
   config.before(:each) do
     Wwo.api_key = nil
+    Wwo.use_premium_api = false
   end
 end
-=end
+
+SimpleCov.start
+CodeClimate::TestReporter.start
+

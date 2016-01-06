@@ -91,11 +91,11 @@ module Wwo
     # Munges the repsonse into one like what we would expect from Forecast.io
     #
     def make_into_forecast_response(response)
-      data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] } }
+      data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] }, alerts: nil }
       data[:daily][:data][0][:icon] = response.data.weather.first.hourly.first.weatherIconUrl.first.value
       data[:daily][:data][0]['temperatureMax'] = response.data.weather.first.maxtempC
       data[:daily][:data][0]['temperatureMin'] = response.data.weather.first.mintempC
-      data
+      Hashie::Mash.new(data)
     end
   end
 end

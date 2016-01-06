@@ -21,7 +21,6 @@ describe Wwo::Configuration do
       end
     end
 
-
     it 'uses the premium endpoint when that is set' do
       Wwo.configure do |configuration|
         expect(configuration.api_endpoint).to eql(Wwo::Configuration::DEFAULT_FREE_ENDPOINT)
