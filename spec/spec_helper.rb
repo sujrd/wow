@@ -16,6 +16,10 @@ end
 
 Faraday.default_adapter = :typhoeus
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
+
 =begin
 RSpec.configure do |config|
   config.before(:each) do
