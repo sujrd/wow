@@ -31,7 +31,7 @@ module Wwo
 
     # API endpoint
     def api_endpoint
-      @api_endpoint ||= ( use_premium_api? ? DEFAULT_PREMIUM_ENDPOINT : DEFAULT_FREE_ENDPOINT )
+      ( use_premium_api? ? DEFAULT_PREMIUM_ENDPOINT : DEFAULT_FREE_ENDPOINT )
     end
 
     # API key
@@ -51,7 +51,7 @@ module Wwo
     private
 
     def use_premium_api?
-      Wwo.use_premium_api == true
+      use_premium_api == true
     end
   end
 end

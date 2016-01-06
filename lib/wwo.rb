@@ -26,9 +26,9 @@ module Wwo
       end
 
       if date.to_i < Time.now.to_i
-        historic(latitude, longitude, date)
+        make_into_forecast_response(historic(latitude, longitude, date))
       else
-        now_or_later(latitude, longitude, date)
+        make_into_forecast_response(now_or_later(latitude, longitude, date))
       end
     end
 
@@ -77,7 +77,7 @@ module Wwo
     def api_call(uri)
       api_response = get(uri)
       if api_response.success?
-        return parse_response(Hashie::Mash.new(MultiJson.load(api_response.body)))
+        return Hashie::Mash.new(MultiJson.load(api_response.body))
       else
         return {}
       end
@@ -90,7 +90,7 @@ module Wwo
 
     # Munges the repsonse into one like what we would expect from Forecast.io
     #
-    def parse_response(response)
+    def make_into_forecast_response(response)
       data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] } }
       data[:daily][:data][0][:icon] = response.data.weather.first.hourly.first.weatherIconUrl.first.value
       data[:daily][:data][0]['temperatureMax'] = response.data.weather.first.maxtempC
