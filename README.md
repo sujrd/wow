@@ -1,5 +1,7 @@
 # WWO - World Weather Online API Gem
 
+[![Join the chat at https://gitter.im/sujrd/wwo](https://badges.gitter.im/sujrd/wwo.svg)](https://gitter.im/sujrd/wwo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gem Version](https://badge.fury.io/rb/wwo.svg)](https://badge.fury.io/rb/wwo)
 
 
