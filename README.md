@@ -1,5 +1,8 @@
 # WWO - World Weather Online API Gem
 
+[![Gem Version](https://badge.fury.io/rb/wwo.svg)](https://badge.fury.io/rb/wwo)
+
+
 This gem provides a (for now) very opinionated interface to [World Weather Online's API][1]. It's based heavily on the
 [forecast-ruby gem](https://github.com/darkskyapp/forecast-ruby) by the wonderful people over at Dark Skies / Forecast.io
 and was bourne out of the need to have a drop in replacemnet for Forecast.io in an application.
