@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.worldweatheronline.com/free/v2/weather.ashx?date=2016-01-10&format=json&key=an-api-key&num_of_days=1&q=35.689488%2C139.691706&tp=24
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 06 Jan 2016 03:16:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1717'
+      Connection:
+      - keep-alive
+      X-ApiaxleProxy-Qps-Left:
+      - '3'
+      X-ApiaxleProxy-Qpd-Left:
+      - '238'
+      cache-control:
+      - public, no-cache="Set-Cookie", max-age=120
+      expires:
+      - Wed, 06 Jan 2016 03:18:27 GMT
+      server:
+      - Microsoft-IIS/7.5
+      x-aspnet-version:
+      - 4.0.30319
+      set-cookie:
+      - wwoanon=VEiL4-Krf050KBE6SRiRimTCixxylnQGejnavMBqYWBxH9GArrUCC5rZwT4QQfSM3lwrQZiCy3FDaBzojrw98_bE-tZObE8QpkLZHatJn7uHBhGxVf-SEudY-Ap241WStxWgIA2;
+        domain=www.worldweatheronline.com; expires=Thu, 30-Nov-2017 13:56:27 GMT;
+        path=/; HttpOnly
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '3962387200'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Headers:
+      - Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token
+      Set-Cookie:
+      - SERVERID=; Expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/
+      Cache-control:
+      - private
+    body:
+      encoding: UTF-8
+      string: '{ "data": { "current_condition": [ {"cloudcover": "100", "FeelsLikeC":
+        "7", "FeelsLikeF": "45", "humidity": "73", "observation_time": "03:16 AM",
+        "precipMM": "0.1", "pressure": "1017", "temp_C": "9", "temp_F": "49", "visibility":
+        "10", "weatherCode": "122",  "weatherDesc": [ {"value": "Overcast" } ],  "weatherIconUrl":
+        [ {"value": "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png"
+        } ], "winddir16Point": "NE", "winddirDegree": "46", "windspeedKmph": "12",
+        "windspeedMiles": "8" } ],  "request": [ {"query": "Lat 35.69 and Lon 139.69",
+        "type": "LatLon" } ],  "weather": [ { "astronomy": [ {"moonrise": "06:30 AM",
+        "moonset": "05:08 PM", "sunrise": "06:51 AM", "sunset": "04:45 PM" } ], "date":
+        "2016-01-10",  "hourly": [ {"chanceoffog": "0", "chanceoffrost": "0", "chanceofhightemp":
+        "0", "chanceofovercast": "0", "chanceofrain": "0", "chanceofremdry": "0",
+        "chanceofsnow": "0", "chanceofsunshine": "100", "chanceofthunder": "0", "chanceofwindy":
+        "0", "cloudcover": "4", "DewPointC": "-3", "DewPointF": "28", "FeelsLikeC":
+        "2", "FeelsLikeF": "36", "HeatIndexC": "4", "HeatIndexF": "39", "humidity":
+        "63", "precipMM": "0.0", "pressure": "1019", "tempC": "11", "tempF": "51",
+        "time": "24", "visibility": "10", "weatherCode": "113",  "weatherDesc": [
+        {"value": "Sunny" } ],  "weatherIconUrl": [ {"value": "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0001_sunny.png"
+        } ], "WindChillC": "2", "WindChillF": "36", "winddir16Point": "N", "winddirDegree":
+        "356", "WindGustKmph": "9", "WindGustMiles": "6", "windspeedKmph": "14", "windspeedMiles":
+        "9" } ], "maxtempC": "11", "maxtempF": "51", "mintempC": "4", "mintempF":
+        "38", "uvIndex": "2" } ] }}'
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.worldweatheronline.com/free/v2/weather.ashx?date=2016-01-10&format=json&key=an-api-key&num_of_days=1&q=35.689488%2C139.691706&tp=24
+  recorded_at: Wed, 06 Jan 2016 03:16:38 GMT
+recorded_with: VCR 3.0.1

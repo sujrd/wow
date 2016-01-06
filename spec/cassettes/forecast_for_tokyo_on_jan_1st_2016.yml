@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.worldweatheronline.com/free/v2/past-weather.ashx?date=2016-01-01&format=json&key=your-api-key&q=35.689488%2C139.691706&tp=24
+    uri: https://api.worldweatheronline.com/free/v2/past-weather.ashx?date=2016-01-01&format=json&key=an-api-key&q=35.689488%2C139.691706&tp=24
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 06 Jan 2016 02:47:26 GMT
+      - Wed, 06 Jan 2016 03:16:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -25,23 +25,23 @@ http_interactions:
       X-ApiaxleProxy-Qps-Left:
       - '4'
       X-ApiaxleProxy-Qpd-Left:
-      - '249'
+      - '239'
       cache-control:
       - public, no-cache="Set-Cookie", max-age=120
       expires:
-      - Wed, 06 Jan 2016 02:49:11 GMT
+      - Wed, 06 Jan 2016 03:18:27 GMT
       server:
       - Microsoft-IIS/7.5
       x-aspnet-version:
       - 4.0.30319
       set-cookie:
-      - wwoanon=cPQaiif1vTWxFzKzI6m9oGjs0-Ehf7sYUUmpNkBjC6JbelEKTINPd-EX8ScA2NhXENmoc3du1Ts7mtRrMSVE_6kbXSmGQms-JMQAVtm02TFHaj21A8KnzCSrNir-oj5LPn-RwQ2;
-        domain=www.worldweatheronline.com; expires=Thu, 30-Nov-2017 13:27:11 GMT;
+      - wwoanon=SFHFV1rPTccdVcA-Rf0plh1n-RuYhLeM9QbDleijzmF1IFRbehJGdRi0WArVB8rEGqyPlcem8a6k5KiOJNMMq7QRT0L-oXy2EVguEpDCSRPYIuPtlcP1JwKPdcDmYsrb-3_GFw2;
+        domain=www.worldweatheronline.com; expires=Thu, 30-Nov-2017 13:56:27 GMT;
         path=/; HttpOnly
       Accept-Ranges:
       - bytes
       X-Varnish:
-      - '5940544'
+      - '3962387142'
       Age:
       - '0'
       Via:
@@ -72,6 +72,6 @@ http_interactions:
         "4", "mintempF": "39", "uvIndex": "0" } ] }}'
     http_version: '1.1'
     adapter_metadata:
-      effective_url: https://api.worldweatheronline.com/free/v2/past-weather.ashx?date=2016-01-01&format=json&key=your-api-key&q=35.689488%2C139.691706&tp=24
-  recorded_at: Wed, 06 Jan 2016 02:47:26 GMT
+      effective_url: https://api.worldweatheronline.com/free/v2/past-weather.ashx?date=2016-01-01&format=json&key=an-api-key&q=35.689488%2C139.691706&tp=24
+  recorded_at: Wed, 06 Jan 2016 03:16:38 GMT
 recorded_with: VCR 3.0.1
