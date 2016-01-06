@@ -3,8 +3,8 @@
 [![Gem Version](https://badge.fury.io/rb/wwo.svg)](https://badge.fury.io/rb/wwo) [![Build Status](https://travis-ci.org/sujrd/wwo.svg?branch=master)](https://travis-ci.org/sujrd/wwo) [![Join the chat at https://gitter.im/sujrd/wwo](https://badges.gitter.im/sujrd/wwo.svg)](https://gitter.im/sujrd/wwo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Code Climate](https://codeclimate.com/github/sujrd/wwo/badges/gpa.svg)](https://codeclimate.com/github/sujrd/wwo) [![Test Coverage](https://codeclimate.com/github/sujrd/wwo/badges/coverage.svg)](https://codeclimate.com/github/sujrd/wwo/coverage) [![License](http://img.shields.io/:license-mit-blue.svg)](http://sujrd.mit-license.org)
 
 This gem provides a (for now) very opinionated interface to [World Weather Online's API][1]. It's based heavily on the
-[forecast-ruby gem](https://github.com/darkskyapp/forecast-ruby) by the wonderful people over at Dark Skies / Forecast.io
-and was bourne out of the need to have a drop in replacemnet for Forecast.io in an application.
+[forecast-ruby gem](https://github.com/darkskyapp/forecast-ruby) by David Czarnecki and was bourne out of the need to have a
+ drop in replacemnet for Forecast.io in an application.
 
 The plan is to enhance this over time so that it supports more of WWO's API and is a bit more developer friendly. Right now,
 however, there are the following assumptions / options that you need to be aware of:
