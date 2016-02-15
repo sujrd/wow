@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.worldweatheronline.com/premium/v1/weather.ashx?date=2016-01-10&format=json&key=an-api-key&num_of_days=1&q=35.689488%2C139.691706&tp=24
+    uri: https://api.worldweatheronline.com/premium/v1/past-weather.ashx?date=2016-01-10&format=json&key=an-api-key&q=35.689488%2C139.691706&tp=24
     body:
       encoding: US-ASCII
       string: ''
