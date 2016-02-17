@@ -30,6 +30,18 @@ describe Wwo::Configuration do
       end
     end
 
+    it 'always uses the endpoint which you set' do
+      Wwo.configure do |configuration|
+        configuration.api_endpoint = 'http://www.google.com'
+      end
+
+      expect(Wwo.api_endpoint).to eql('http://www.google.com')
+
+      Wwo.configure do |configuration|
+        configuration.api_endpoint = nil
+      end
+    end
+
   end
 
 end

@@ -31,7 +31,7 @@ module Wwo
 
     # API endpoint
     def api_endpoint
-      ( use_premium_api? ? DEFAULT_PREMIUM_ENDPOINT : DEFAULT_FREE_ENDPOINT )
+      @api_endpoint.nil? ? ( use_premium_api? ? DEFAULT_PREMIUM_ENDPOINT : DEFAULT_FREE_ENDPOINT ) : @api_endpoint
     end
 
     # API key
