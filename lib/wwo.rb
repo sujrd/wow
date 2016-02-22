@@ -14,6 +14,32 @@ module Wwo
 
   class << self
 
+    # Returns a daily breakdown for weather for the provided start and end data at the
+    # specified location.
+    #
+    def date_range(start_date, end_date, latitude, longitude, forecast_compat = false)
+      starting  = start_date.strftime('%F')
+      ending    = end_date.strftime('%F')
+
+      uri = "#{Wwo.api_endpoint}/past-weather.ashx?q=#{latitude},#{longitude}&format=json&extra=utcDateTime&date=#{starting}&enddate=#{ending}&show_comments=no&tp=24&key=#{Wwo.api_key}&mca=false&show_comments=false"
+
+      if forecast_compat
+        make_into_forecast_response(api_call(uri))
+      else
+        api_call(uri)
+      end
+    end
+
+    # Returns an hourly breakdown for the weather "today" at the given location. We get
+    # the current time and then turn it into UTC. Returns a Hashie Mash with every hour of
+    # weather broken down.
+    #
+    def today(latitude, longitude)
+      date = Time.now.utc.strftime("%F")
+      uri = "#{Wwo.api_endpoint}/weather.ashx?q=#{latitude},#{longitude}&date=today&num_of_days=1&tp=1&format=json&key=#{Wwo.api_key}&mca=false&show_comments=false"
+      api_call(uri)
+    end
+
     # Provides API compatibility to forecast.io's rubygem - expects the same signature and a
     # Unix Timestamp for :time, it will use the historic / now_or_later methods under the hood
     # to actually do its work.
@@ -91,10 +117,22 @@ module Wwo
     # Munges the repsonse into one like what we would expect from Forecast.io
     #
     def make_into_forecast_response(response)
-      data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] }, alerts: nil }
-      data[:daily][:data][0][:icon] = response.data.weather.first.hourly.first.weatherIconUrl.first.value
-      data[:daily][:data][0]['temperatureMax'] = response.data.weather.first.maxtempC
-      data[:daily][:data][0]['temperatureMin'] = response.data.weather.first.mintempC
+      if ! response.data.weather.nil? && response.data.weather.any? && response.data.weather.size > 1
+        data = { daily: { data: [] } }
+        response.data.weather.each do |weather|
+          icon = weather.hourly.first.weatherIconUrl.first.value
+          maxTemp = weather.maxtempC
+          minTemp = weather.mintempC
+          date = Time.parse("#{weather.date} 12:00:00")
+
+          data[:daily][:data] << { icon: icon, "temperatureMax" => maxTemp, "temperatureMin" => minTemp, date: date }
+        end
+      else
+        data = { daily: { data: [ { icon: '', 'temperatureMax' => 0, 'temperatureMin' => 0  } ] }, alerts: nil }
+        data[:daily][:data][0][:icon] = response.data.weather.first.hourly.first.weatherIconUrl.first.value
+        data[:daily][:data][0]['temperatureMax'] = response.data.weather.first.maxtempC
+        data[:daily][:data][0]['temperatureMin'] = response.data.weather.first.mintempC
+      end
       Hashie::Mash.new(data)
     end
   end
